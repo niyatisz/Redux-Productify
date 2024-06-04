@@ -1,12 +1,11 @@
 import React from 'react'
 import './Login.css'
 import {useForm} from 'react-hook-form'
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 
 const Login = () => {
-    const {register, getValues, handleSubmit, formState: {errors}} = useForm();  
-    console.log('getValues: ', getValues());
+    const {register, handleSubmit, formState: {errors}} = useForm();  
     const { login } = useAuth();
     const onFormSubmit = (data) => {
        login(data)

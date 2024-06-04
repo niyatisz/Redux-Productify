@@ -1,7 +1,8 @@
 import React from 'react'
 import './Login.css'
 import {useForm} from 'react-hook-form'
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const {register, getValues, handleSubmit, formState: {errors}} = useForm();   
@@ -9,6 +10,7 @@ const Register = () => {
 
     const onFormSubmit = (data) => {
         signup(data);
+       
     }
   return (
     <div className='register'>
@@ -18,16 +20,29 @@ const Register = () => {
                 <h2>Register</h2>
                 <div class="inputBox">
                     <input type="text" required="required"
-                    {...register('username', {required: true})} />
-                    <span>Username</span>
+                    {...register('firstName', {required: true})} />
+                    <span>First Name</span>
                     <i></i>
                 </div>
                 <div class="inputBox">
                     <input type="text" required="required"
+                    {...register('lastName', {required: true})} />
+                    <span>Last Name</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="email" required="required"
                     {...register('email', {required: true})}/>
                     <span>Email</span>
                     <i></i>
                 </div>
+                <div class="inputBox">
+                    <input type="number" required="required"
+                    {...register('phoneNumber', {required: true})}/>
+                    <span>Phone Number</span>
+                    <i></i>
+                </div>
+                
                 <div class="inputBox">
                     <input type="password" required="required"
                     {...register('password', {required: true})}/>

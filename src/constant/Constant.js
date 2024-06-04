@@ -1,6 +1,7 @@
-export const LOGIN_SUCCESS = 'Login Successfully';
-export const LOGIN_ERROR = 'Login Failed';
-export const SIGNUP_SUCCESS = 'Signup Successfully';
-export const SIGNUP_ERROR = 'Signup Failed';
-export const LOGOUT_SUCCESS = 'Logout Successfully';
-export const LOGOUT_ERROR = 'Logout Failed';
+export const FETCH_PRODUCTS_REQUEST = 'FETCH_PRODUCTS_REQUEST';
+export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
+export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
+
+export const FETCH_PRODUCTS_BY_ID_REQUEST = 'FETCH_PRODUCTS_BY_ID_REQUEST';
+export const FETCH_PRODUCTS_BY_ID_SUCCESS = 'FETCH_PRODUCTS_BY_ID_SUCCESS';
+export const FETCH_PRODUCTS_BY_ID_FAILURE = 'FETCH_PRODUCTS_BY_ID_FAILURE'

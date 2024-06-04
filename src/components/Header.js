@@ -18,10 +18,15 @@ const Header = () => {
                 <p><span>Pro</span>ductify</p>
                 <ul>
                     <li class="big-screens">
-                        <Link to='/' >Products</Link>
+                        <Link to='/products' >Products</Link>
 
                         {isLoggedIn ? (
+                            <>
                             <Link to='/' className='btn logout' onClick={handleLogout}>Logout</Link>
+                            <Link to='/edit-profile' className='btn logout'>Edit Profile</Link>
+                            <Link to='/change-password' className='btn logout'>Change Password</Link>
+
+                            </>
                         ) : (
                             <><Link to='/register' class="btn register">Register</Link><Link to='/' class="btn login">Log In</Link></>
                         )}

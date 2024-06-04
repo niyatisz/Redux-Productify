@@ -1,0 +1,35 @@
+.Product {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    box-shadow: 0 0 20px #45f4ff;
+    margin-top: 2%;
+}
+
+.Product h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    order: 2; 
+}
+
+.Product img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    order: 1; 
+}
+
+.Product p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    order: 2;
+}
+
+.Product p strong {
+    font-weight: 600;
+}

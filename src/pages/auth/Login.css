@@ -8,7 +8,22 @@
     padding: 0;
 
 }
-
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    margin-top: 10%;
+    /* background: #121212; */
+}
+.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    margin-top: 10%;
+    /* background: #121212; */
+}
 
 .box {
     position: relative;
@@ -21,7 +36,7 @@
 .register-box {
     position: relative;
     width: 380px;
-    height: 520px;
+    height: 620px;
     border-radius: 8px;
     background: #1c1c1c;
     overflow: hidden;
@@ -38,8 +53,33 @@
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
 }
+.register-box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, 
+    #45f4ff, #45f4ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
 
 .box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, 
+    #45f4ff, #45f4ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+.register-box::after{
     content: '';
     position: absolute;
     top: -50%;
@@ -162,7 +202,7 @@ input[type='submit'] {
     outline: none;
     background: #45f3ff;
     padding: 11px 25px;
-    width: 100px;
+    width: 100;
     margin-top: 10px;
     border-radius: 4px;
     font-weight: 600;
