@@ -20,6 +20,9 @@ export const AuthProvider = ({ children }) => {
         } else if (existingUsers.length+1 > 5) {
           toast.error(SIGNUP_LIMIT_ERROR);
         }
+        else if (data.password !== data.confirmPassword) {
+          toast.error(CHANGE_PASSWORD_MATCH_ERROR);
+        }
         else {
           data.password = CryptoJS.AES.encrypt(data.password, 'niyti@124').toString();
           existingUsers.push(data);
