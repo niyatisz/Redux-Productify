@@ -87,28 +87,14 @@ nav .btn {
 }
 
 .register {
-  /* background-color: #45f4ff; */
-  /* color: white; */
-  /* border: 1px solid #4caf50; */
   border-radius: 5px;
   color: #45f4ff;
 }
-
-/* .register:hover {
-  background-color: #3c8c40;
-} */
 
 .login {
-  /* background-color: white; */
   color: #45f4ff;
 }
 
-/* .login:hover {
-  background-color: #4caf50;
-  color: white;
-  border: 1px solid #4caf50;
-  border-radius: 5px;
-} */
 
 /* NAVIGATION BAR ENDS */
 
@@ -128,9 +114,41 @@ nav .btn {
     padding: 1rem 5vw;
   }
   
-  nav .small-screens i{
+  nav .bar-icon{
     font-size: 25px;
     cursor: pointer;
+    color: #45f4ff;
+  }
+  nav .small-screens ul {
+    display: none;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    padding: 1rem 5vw;
+  }
+
+  nav .small-screens ul.open {
+    display: flex;
+    .btn {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0 0 0.5rem;
+      border: 1px solid #45f4ff;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+      font-size: 17px;
+    }
+  }
+
+  nav .small-screens ul a {
+    padding: 0.5rem 0.5rem;
   }
   
   nav .big-screens {

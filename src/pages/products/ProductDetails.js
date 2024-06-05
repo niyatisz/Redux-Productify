@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsById } from '../../redux/action/Action';
+import { addToCart, fetchProductsById } from '../../redux/action/Action';
 import { useParams } from 'react-router-dom';
 import './ProductDetails.css'
 
@@ -19,6 +19,11 @@ const ProductDetails = () => {
     return <div>Loading...</div>;
   }
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+
   return (
     <div className='Product'>
       <h1>{product.title}</h1>
@@ -29,6 +34,7 @@ const ProductDetails = () => {
       <p><strong>Rating:</strong> {product.rating}</p>
       <p><strong>Discount:</strong> {product.discountPercentage}%</p>
       <p><strong>Price:</strong> {product.price}€</p>
+      <button className='cart-btn' onClick={() => handleAddToCart(product)}>Add To Cart</button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_BY_ID_REQUEST, FETCH_PRODUCTS_BY_ID_SUCCESS, FETCH_PRODUCTS_BY_ID_FAILURE} from '../../constant/Constant'
+import {FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_BY_ID_REQUEST, FETCH_PRODUCTS_BY_ID_SUCCESS, FETCH_PRODUCTS_BY_ID_FAILURE, ADD_TO_CART, REMOVE_FROM_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from '../../constant/Constant'
 
 export const fetchRequestProducts = () => {
     return {
@@ -38,6 +38,40 @@ export const fetchProductsByIdFailure = (error) => {
     return {
         type: FETCH_PRODUCTS_BY_ID_FAILURE,
         payload: error
+    }
+}
+
+export const addToCart = (products) => {
+    return {
+        type: ADD_TO_CART,
+        payload: products
+    }
+}
+
+export const removeFromCart = (products) => {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: products
+    }
+}
+
+export const incrementQuantity = (productId) => {
+    return {
+    type : INCREMENT_QUANTITY,
+    payload: productId
+    }
+}
+export const decrementQuantity = (productId) => {
+    return {
+    type : DECREMENT_QUANTITY,
+    payload: productId
+    }
+}
+
+export const cartProductPrice = (productId) => {
+    return {
+        type : ADD_TO_CART,
+        payload: productId
     }
 }
 

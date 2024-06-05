@@ -11,7 +11,7 @@
     margin: 20px;
     box-shadow: 0 0 20px #45f4ff;
     border-radius: 5px;
-    height: 600px;
+    height: 630px;
     padding: 20px;
     overflow-y:auto;
 }
@@ -93,6 +93,29 @@
   font-size: 17px;
   background: transparent;
   color: #45f4ff;
+}
+.cart-btn {
+    padding: 0.5rem 1rem;
+  margin: 0 0 0 0.5rem;
+  border: 1px solid #45f4ff;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  font-size: 17px;
+  background: transparent;
+  color: #45f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-btn:hover {
+    background-color: #45f4ff;
+    color: black;
+}
+.btn:hover {
+    background-color: #45f4ff;
+    color: black;
 }
 
 .Products .btn:disabled {

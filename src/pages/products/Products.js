@@ -1,31 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { fetchProducts } from '../../redux/action/Action';
+import { addToCart, fetchProducts } from '../../redux/action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import './Products.css';
 import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const products = useSelector(state => state.products);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const products = useSelector(state => state.products);
+  const isLoading = useSelector(state => state.isLoading);
+  const error = useSelector(state => state.error);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   
-    useEffect(() => {
-      dispatch(fetchProducts(currentPage));
-    }, [dispatch, currentPage]);
+  useEffect(() => {
+    dispatch(fetchProducts(currentPage));
+  }, [dispatch, currentPage]);
   
-    const handlePrevPage = () => {
-      if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
-      }
-    };
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
   
-    const handleNextPage = () => {
-      setCurrentPage(currentPage + 1);
-    };
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
   
-    return (
-      <div className='Products'>
+  return (
+    <div className='Products'>
+      {isLoading && <p>Loading...</p>}
+      {error && <p className='error'>{error}</p>}
+      {!isLoading && !error && (
         <div className="row">
           {products.map(product => (
             <div key={product.id} className="col l3 m3 s12 product">
@@ -60,19 +69,19 @@ const Products = () => {
                       </div>
                     </div>
                   </div>
+                  <button className='cart-btn' onClick={()=> handleAddToCart(product)}>Add to cart</button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <button className='btn' onClick={handlePrevPage} disabled={currentPage === 1}>Prev</button>
-          <button className='btn' onClick={handleNextPage}>Next</button>
-        </div>
+      )}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button className='btn' onClick={handlePrevPage} disabled={currentPage === 1}>Prev</button>
+        <button className='btn' onClick={handleNextPage}>Next</button>
       </div>
-    );
-  };
-
-  
+    </div>
+  );
+};
 
 export default Products;
