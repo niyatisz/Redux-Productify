@@ -12,7 +12,6 @@ const Login = () => {
     const navigate = useNavigate();
     const onFormSubmit = (data) => {
        login(data)
-       navigate('/products');
     }
     useEffect(() => {
         const isLoggedIn = localStorage.getItem('isLoggedIn');

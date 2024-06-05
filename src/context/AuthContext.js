@@ -45,9 +45,7 @@ export const AuthProvider = ({ children }) => {
           localStorage.setItem('isLoggedIn', true);
           toast.success(LOGIN_SUCCESS);
           navigate('/products');
-        }else if (!user){
-          toast.error(USER_NOT_FOUND);
-        } else {
+        }else {
           toast.error(LOGIN_ERROR);
         }
       };

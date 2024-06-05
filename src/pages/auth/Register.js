@@ -11,7 +11,6 @@ const Register = () => {
 
     const onFormSubmit = (data) => {
         signup(data);
-       navigate('/')
     }
 
     useEffect(() => {
