@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
@@ -20,7 +20,7 @@ const Header = () => {
         return cart.reduce((total, item) => total + item.quantity, 0);
     };
 
-    const [menuOpen, setMenuOpen] = React.useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { CHANGE_PASSWORD_MATCH_ERROR, CHANGE_PASSWORD_SUCCESS, CURRENT_PASSWORD_ERROR, EDIT_PROFILE_SUCCESS, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT_SUCCESS, SIGNUP_ERROR, SIGNUP_LIMIT_ERROR, SIGNUP_SUCCESS, USER_NOT_FOUND } from "../constant/Messages";
+import { CHANGE_PASSWORD_MATCH_ERROR, CHANGE_PASSWORD_SUCCESS, CURRENT_PASSWORD_ERROR, EDIT_PROFILE_SUCCESS, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT_SUCCESS, SIGNUP_EMAIL_EXIST_ERROR, SIGNUP_LIMIT_ERROR, SIGNUP_SUCCESS, USER_NOT_FOUND } from "../constant/Messages";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 const CryptoJS = require("crypto-js");
@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
         const isDuplicate = existingUsers.some(user => user.email === data.email);
         if (isDuplicate) {
-          toast.error(SIGNUP_ERROR);
+          toast.error(SIGNUP_EMAIL_EXIST_ERROR);
         } else if (existingUsers.length+1 > 5) {
           toast.error(SIGNUP_LIMIT_ERROR);
         }
@@ -45,6 +45,8 @@ export const AuthProvider = ({ children }) => {
           localStorage.setItem('isLoggedIn', true);
           toast.success(LOGIN_SUCCESS);
           navigate('/products');
+        }else if (!user){
+          toast.error(USER_NOT_FOUND);
         } else {
           toast.error(LOGIN_ERROR);
         }
@@ -53,7 +55,6 @@ export const AuthProvider = ({ children }) => {
       const logout = () => {
         setUser(null);
         localStorage.removeItem('user');
-        // localStorage.removeItem('users');
         localStorage.removeItem('isLoggedIn');
         toast.success(LOGOUT_SUCCESS);
         navigate('/');
