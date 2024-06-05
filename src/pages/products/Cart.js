@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementQuantity, decrementQuantity, removeFromCart } from '../../redux/action/Action';
+import { incrementQuantity, decrementQuantity, removeFromCart, clearCart } from '../../redux/action/Action';
 import './Cart.css';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleIncrementQuantity = (productId) => {
     dispatch(incrementQuantity(productId));
@@ -18,6 +20,16 @@ const Cart = () => {
   const handleRemoveFromCart = (productId) => {
     dispatch(removeFromCart(productId));
   };
+
+  const handlePayNow = (cartItems) => {
+    dispatch(clearCart(cartItems));
+    localStorage.removeItem('cart');
+    navigate('/payment')
+  };
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className='Cart'>
@@ -43,7 +55,7 @@ const Cart = () => {
           <div className="cart-total">
             <h3>Total: {cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}€</h3>
           </div>
-          <button className="payment-btn" style={{display: 'flex', position:'relative', justifyContent:'center'}} onClick={() => window.location.href = '/payment'}>Pay Now</button>
+          <button className="payment-btn" style={{display: 'flex', position:'relative', justifyContent:'center'}} onClick={()=>handlePayNow(cart)}>Pay Now</button>
         </div>
       )}
     </div>

@@ -135,6 +135,7 @@ nav .btn {
 
   nav .small-screens ul.open {
     display: flex;
+    flex-direction: row;
     .btn {
       padding: 0.5rem 1rem;
       margin: 0.5rem 0 0 0.5rem;

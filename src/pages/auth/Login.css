@@ -14,7 +14,6 @@
     align-items: center;
     height: max-content;
     margin-top: 10%;
-    /* background: #121212; */
 }
 .register{
     display: flex;
@@ -22,7 +21,6 @@
     align-items: center;
     height: max-content;
     margin-top: 10%;
-    /* background: #121212; */
 }
 
 .box {
@@ -211,4 +209,38 @@ input[type='submit'] {
 
 input[type='submit']:active {
     opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+    .box, .register-box {
+        width: 90%;
+        margin-top: 20%;
+    }
+    .form {
+        padding: 40px 30px;
+    }
+    .inputBox {
+        width: 100%;
+    }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+    .box, .register-box {
+        width: 80%;
+        margin-top: 40%;
+        margin-bottom: 10%;
+    }
+    .form {
+        padding: 30px 20px;
+    }
+    .inputBox {
+        width: 100%;
+    }
+    .links a {
+        font-size: 0.65em;
+    }
+    input[type='submit'] {
+        padding: 10px 20px;
+    }
 }
