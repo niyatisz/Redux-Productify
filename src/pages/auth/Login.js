@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Login.css'
 import {useForm} from 'react-hook-form'
 import { useAuth } from '../../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-    const {register, handleSubmit, formState: {errors}} = useForm();  
+    const {register, handleSubmit} = useForm();  
     const { login } = useAuth();
+
+    const navigate = useNavigate();
     const onFormSubmit = (data) => {
        login(data)
+       navigate('/products');
     }
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn) {
+          navigate('/products');
+        }
+      }, [navigate]); 
   return (
     <div className='login'>
          <div class="box">
@@ -30,8 +40,7 @@ const Login = () => {
                     <i></i>
                 </div>
                 <div class="links">
-                    <a href="https://akhs1.com/">Forgot password?</a>
-                    <a href="/register">Don't have an account? Sign Up</a>
+                    <Link to='/register'>Don't have an account? Sign Up</Link>
                 </div>
                 <a href="https://akhs1.com/"><input type="submit" value="Login" /></a>
             </div>
